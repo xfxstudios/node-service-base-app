@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # run test
-npm run test
+#npm run test
 
 # valid Branch name
 local_branch_name="$(git rev-parse --abbrev-ref HEAD)"
