@@ -10,7 +10,7 @@ export class GetCountry {
     return {
       error: false,
       requesData: data.serialize(),
-      country: _request
+      data: _request
     }
   }
 }

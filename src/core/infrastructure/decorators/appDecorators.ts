@@ -1,5 +1,9 @@
 import { serviceConfig } from '../config/services.config'
 
+/**
+ * Valida los decoradores usados en los DTOs con class-validator
+ * @returns Function
+ */
 export function ValidDtoParams () {
   return function (
     target: Object,
@@ -18,6 +22,10 @@ export function ValidDtoParams () {
   }
 }
 
+/**
+ * Realiza el log de la request entrante a un metodo de controlador express
+ * @returns Function
+ */
 export function LogRequest () {
   return function (
     target: Object,
