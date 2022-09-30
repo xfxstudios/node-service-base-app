@@ -1,6 +1,7 @@
 import { IRequestContract } from '../../../domain/contract/iRequestContract'
 import { IRequestHeaders } from '../../../domain/interfaces/iAppInterfaces'
 import { appConfig } from '../../config/index.config'
+import {serviceConfig} from '../../config/services.config'
 import { axiosCore } from './axiosCore'
 
 export class AxiosService implements IRequestContract {
@@ -58,7 +59,7 @@ export class AxiosService implements IRequestContract {
 
       return result?.data
     } catch (err) {
-      appConfig.services.logger.setError(err.message, err)
+      serviceConfig.logger.setError(err.message, err)
 
       return err.message
     }
