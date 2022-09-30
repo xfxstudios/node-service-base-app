@@ -1,4 +1,6 @@
 import { Request, Response } from 'express'
+import {NewUserDTO} from '../../domain/dto/newUserDTO'
+import {NewUserCase} from '../../domain/use_case/newUser.case'
 import { LogRequest } from '../../infrastructure/decorators/appDecorators'
 
 export class UserController {
@@ -9,7 +11,10 @@ export class UserController {
 
   @LogRequest()
   async newUser (req: Request, res: Response) {
-    res.send('Nuevo Usuario')
+    const _process = new NewUserCase()
+    const _data = new NewUserDTO(req.body)
+    const _response = await _process.execute(_data)
+    res.json(_response)
   }
 
   @LogRequest()

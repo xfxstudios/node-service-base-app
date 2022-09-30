@@ -62,7 +62,10 @@ export function HashPassword(){
 
     function _hashData(info:String){
       let salt = 10;
-      return bcrypt.hashSync(info??"", salt)
+      if(info){
+        return bcrypt.hashSync(info, salt)
+      }
+      return null
       
     }
 
