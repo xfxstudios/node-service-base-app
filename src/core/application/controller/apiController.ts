@@ -11,8 +11,7 @@ export class ApiController {
   async test (req: Request, res: Response) {
     const _process = new GetJsonPlaceholderCase()
     const _response: any = await _process.execute()
-
-    res.json(_response)
+    res.status(_response.error?400:200).json(_response)
   }
 
   @LogRequest()
@@ -20,21 +19,20 @@ export class ApiController {
     const _process = new GetCountry()
     const _data = new GetCountryDTO(req.params)
     const response: any = await _process.execute(_data)
-
-    res.json(response)
+    res.status(response.error?400:200).json(response)
   }
 
   @LogRequest()
   async encryptData (req: Request, res: Response) {
     const _process = new EncryptTestCase()
     const response: any = await _process._encrypt(req.body)
-    res.json(response)
+    res.status(response.error?400:200).json(response)
   }
 
   @LogRequest()
   async decryptData (req: Request, res: Response) {
     const _process = new EncryptTestCase()
     const response: any = await _process._decript(req.body)
-    res.json(response)
+    res.status(response.error?400:200).json(response)
   }
 }
