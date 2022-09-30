@@ -1,5 +1,10 @@
 import { serviceConfig } from '../config/services.config'
+import { generalEnum } from '../enums/general.enum'
 
+/**
+ * Valida los decoradores usados en los DTOs con class-validator
+ * @returns Function
+ */
 export function ValidDtoParams () {
   return function (
     target: Object,
@@ -18,6 +23,10 @@ export function ValidDtoParams () {
   }
 }
 
+/**
+ * Realiza el log de la request entrante a un metodo de controlador express
+ * @returns Function
+ */
 export function LogRequest () {
   return function (
     target: Object,
@@ -35,7 +44,7 @@ export function LogRequest () {
       const url = arg[0].url
       const endpoint = arg[0].url.split('/')[1]
 
-      await serviceConfig.logger.setDebug('Express Request', { body, params, headers, method, originalUrl, url, endpoint })
+      await serviceConfig.logger.setDebug(generalEnum.INCOMING_REQUEST, { body, params, headers, method, originalUrl, url, endpoint })
       return original.apply(this, arg)
     }
   }

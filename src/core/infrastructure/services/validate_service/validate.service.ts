@@ -1,4 +1,5 @@
 import { ValidationError, validate } from 'class-validator'
+import { generalEnum } from '../../enums/general.enum'
 
 export class ValidateService {
   async validateRequestData (data: any) {
@@ -20,7 +21,7 @@ export class ValidateService {
         error: true,
         requesData: data.serialize(),
         errors: outData,
-        message: 'Error en los datos recibidos'
+        message: generalEnum.ERROR_DTO_VALIDATE
       }
     } else {
       return false

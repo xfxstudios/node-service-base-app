@@ -9,7 +9,11 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 router.get('/test', controllerConfig.apiController.test)
-
 router.get('/get-country/:iso?', controllerConfig.apiController.getCountry)
+router.route('/user')
+  .post(controllerConfig.userController.newUser)
+  .get(controllerConfig.userController.getUser)
+  .put(controllerConfig.userController.updateUser)
+  .delete(controllerConfig.userController.deleteUser)
 
 export default router
