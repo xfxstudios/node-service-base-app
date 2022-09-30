@@ -7,8 +7,8 @@ export class AppRepository {
     return _data
   }
 
-  async getJsonPlaceholder(){
-    const _data = await serviceConfig.requestService.doGet(`https://jsonplaceholder.typicode.com/posts`,{},[]);
+  async getJsonPlaceholder () {
+    const _data = await serviceConfig.requestService.doGet('https://jsonplaceholder.typicode.com/posts', {}, [])
     return _data
   }
 }

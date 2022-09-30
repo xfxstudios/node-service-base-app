@@ -1,9 +1,8 @@
-import {repositoryConfig} from "../../infrastructure/config/repository.config";
+import { repositoryConfig } from '../../infrastructure/config/repository.config'
 
 export class GetJsonPlaceholderCase {
-
-  async execute(){
-    const _response = await repositoryConfig.appRepository.getJsonPlaceholder();
+  async execute () {
+    const _response = await repositoryConfig.appRepository.getJsonPlaceholder()
 
     return {
       error: false,
@@ -11,5 +10,4 @@ export class GetJsonPlaceholderCase {
       data: _response
     }
   }
-
 }
