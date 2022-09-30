@@ -1,5 +1,6 @@
 import { serviceConfig } from '../config/services.config'
 import { generalEnum } from '../enums/general.enum'
+import bcrypt  from "bcrypt";
 
 /**
  * Valida los decoradores usados en los DTOs con class-validator
@@ -47,5 +48,36 @@ export function LogRequest () {
       await serviceConfig.logger.setDebug(generalEnum.INCOMING_REQUEST, { body, params, headers, method, originalUrl, url, endpoint })
       return original.apply(this, arg)
     }
+  }
+}
+
+
+export function HashPassword(){
+  return function(target:any, key:string|symbol){
+    let value = target[key]
+
+    const getter = function(){
+      return value
+    }
+
+    function _hashData(info:String){
+      let salt = 10;
+      if(info){
+        return bcrypt.hashSync(info, salt)
+      }
+      return null
+      
+    }
+
+    const setter = function(data: String) {
+      value = _hashData(data)
+    }
+
+    Object.defineProperty(target,key,{
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true
+    })
   }
 }
