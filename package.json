@@ -6,13 +6,15 @@
   "scripts": {
     "lint": "ts-standard --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e ts --watch src .env --exec \"clear && echo \"Loading...\" && tsc --incremental && clear && node dist/app\" "
+    "dev": "nodemon -e ts --watch src .env --exec \"clear && echo \"Loading...\" && tsc --incremental && npm run copy && clear && node dist/src/app\" ",
+    "copy": "copyfiles src/core/infrastructure/security/* dist/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.7.23",
+    "copyfiles": "^2.4.1",
     "husky": "^8.0.1",
     "jira-prepare-commit-msg": "^1.6.2",
     "nodemon": "^2.0.20",
