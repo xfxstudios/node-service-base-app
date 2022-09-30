@@ -3,6 +3,7 @@ import { GetCountryDTO } from '../../domain/dto/getCountryDTO'
 import { GetCountry } from '../../domain/use_case/getCountry.case'
 import { LogRequest } from '../../infrastructure/decorators/appDecorators'
 import { GetJsonPlaceholderCase } from '../../domain/use_case/getJsonPlaceholder.case';
+import {EncryptTestCase} from '../../domain/use_case/encryptTest.case';
 
 
 export class ApiController {
@@ -20,6 +21,20 @@ export class ApiController {
     const _data = new GetCountryDTO(req.params)
     const response: any = await _process.execute(_data)
 
+    res.json(response)
+  }
+
+  @LogRequest()
+  async encryptData (req: Request, res: Response) {
+    const _process = new EncryptTestCase()
+    const response: any = await _process._encrypt(req.body)
+    res.json(response)
+  }
+
+  @LogRequest()
+  async decryptData (req: Request, res: Response) {
+    const _process = new EncryptTestCase()
+    const response: any = await _process._decript(req.body)
     res.json(response)
   }
 }

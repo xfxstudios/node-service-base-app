@@ -4,7 +4,7 @@
     "lib": ["es2018", "esnext.asynciterable"],
     "target": "es2018",
     "module": "commonjs",
-    "outDir": "./dist",
+    "outDir": "./dist/src",
     "esModuleInterop": true,
 
     /* Experimental Options */
