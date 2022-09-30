@@ -1,10 +1,9 @@
 import express, { Application } from 'express'
 import router from '../../application/routes/api.routes'
-import {authRoutes} from '../../application/routes/auth.routes'
+import { authRoutes } from '../../application/routes/auth.routes'
 import { serviceConfig } from '../config/services.config'
 import { generalEnum } from '../enums/general.enum'
 const expressListRoutes = require('express-list-routes')
-
 
 export class Server {
   protected app: Application
