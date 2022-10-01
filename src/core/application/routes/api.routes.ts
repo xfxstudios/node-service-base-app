@@ -14,8 +14,9 @@ router.get('/get-country/:iso?', apiController.getCountry)
 
 router.route('/user')
   .post(userController.newUser)
-  .get(userController.getUser)
+  .get(userController.getUsers)
   .put(userController.updateUser)
   .delete(userController.deleteUser)
+router.get('/user/:id/show',userController.getUserById)
 
 export default router
