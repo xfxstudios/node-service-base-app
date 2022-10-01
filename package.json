@@ -7,7 +7,7 @@
     "lint": "ts-standard --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -e ts --watch src .env --exec \"clear && echo \"Loading...\" && tsc --incremental && npm run copy && clear && node dist/src/app\" ",
-    "copy": "copyfiles src/core/infrastructure/security/* dist/"
+    "copy": "copyfiles src/core/infrastructure/security/* dist/ && copyfiles src/core/infrastructure/databases/*.config dist/"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +33,8 @@
     "express": "^4.18.1",
     "express-group-routes": "^1.1.0",
     "express-list-routes": "^1.1.3",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.3",
     "node_smart_logger": "^1.7.2",
     "request": "^2.88.2"
   },
