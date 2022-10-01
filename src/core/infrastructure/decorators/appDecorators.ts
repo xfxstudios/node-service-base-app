@@ -51,7 +51,12 @@ export function LogRequest () {
   }
 }
 
-
+/**
+ * Permite Hashear una clave o parámetro seteado en un DTO
+ * uso:
+ * @HashPassword
+ * private readonly password:String;
+ */
 export function HashPassword(){
   return function(target:any, key:string|symbol){
     let value = target[key]
