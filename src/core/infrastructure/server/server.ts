@@ -16,14 +16,13 @@ export class Server {
   async prepareParams(){
     return new Promise(async (resolve, reject) => {
       try{
-        await serviceConfig.logger.setSteep({message:'Preparing properties',number:1})
         this.app = express()
         this.port = process.env.PORT || 0
         this.prefix = process.env.PREFIX || '/api'
-        await serviceConfig.logger.setSuccess('Properties started')
+          await serviceConfig.logger.setSuccess('Properties started')
         resolve(true)
       }catch(e){
-        await serviceConfig.logger.setError(e.message,e)
+          await serviceConfig.logger.setError(e.message,e)
         reject(e.message)
       }
     })
@@ -32,14 +31,13 @@ export class Server {
   async middleware () {
     return new Promise(async (resolve, reject) => {
       try{
-        await serviceConfig.logger.setSteep({message:'Preparing middlewares',number:2})
         this.app.use(express.json())
         this.app.use(express.static('public'))
         this.app.use(express.urlencoded({ extended: true }))
-        await serviceConfig.logger.setSuccess('Middleware started')
+          await serviceConfig.logger.setSuccess('Middleware started')
         resolve(true)
       }catch(e){
-        await serviceConfig.logger.setError(e.message,e)
+          await serviceConfig.logger.setError(e.message,e)
         reject(e.message)
       }
 
@@ -49,13 +47,12 @@ export class Server {
   async restRoutes () {
     return new Promise(async (resolve, reject) => {
       try{
-        await serviceConfig.logger.setSteep({message:'Preparing routes',number:3})
         this.app.use(this.prefix, router)// [ Express estandard routes ]
         authRoutes(this.prefix, this.app)// [ Expres routes group ]
-        await serviceConfig.logger.setSuccess('Routes loaded')
+          await serviceConfig.logger.setSuccess('Routes loaded')
         resolve(true)
       }catch(e){
-        await serviceConfig.logger.setError(e.message,e)
+          await serviceConfig.logger.setError(e.message,e)
         reject(e.message)
       }
     })
@@ -64,12 +61,11 @@ export class Server {
   async logRoutes () {
     return new Promise(async (resolve, reject) => {
       try{
-        await serviceConfig.logger.setSteep({message:'Loggin routes',number:4})
         expressListRoutes(this.app)
-        await serviceConfig.logger.setSuccess('Routes logged')
+          await serviceConfig.logger.setSuccess('Routes logged')
         resolve(true)
       }catch(e){
-        await serviceConfig.logger.setError(e.message,e)
+          await serviceConfig.logger.setError(e.message,e)
         reject(e.message)
       }
     })
@@ -78,12 +74,11 @@ export class Server {
   async initDatabses(){
     return new Promise(async (resolve, reject) => {
       try{
-        await serviceConfig.logger.setSteep({message:'Starting Databases Connections',number:5})
         await databases
-        await serviceConfig.logger.setSuccess('Databases started')
+          await serviceConfig.logger.setSuccess('Databases started')
         resolve(true)
       }catch(e){
-        await serviceConfig.logger.setError(e.message,e)
+          await serviceConfig.logger.setError(e.message,e)
         reject(e.message)
       }
     })
@@ -93,7 +88,7 @@ export class Server {
     this.prepareParams()
     .then((_) => this.middleware())
     .then((_) => this.restRoutes())
-    .then((_) => this.logRoutes())
+    //.then((_) => this.logRoutes())
     .then((_) => this.initDatabses())
     .then((_) => {
       const listener = this.app.listen(this.port, async () => {
