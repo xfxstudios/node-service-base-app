@@ -1,66 +1,64 @@
-import {IsEmail, IsNotEmpty, IsString} from "class-validator";
-import {HashPassword} from "../../infrastructure/decorators/appDecorators";
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator'
+import { HashPassword } from '../../infrastructure/decorators/appDecorators'
 
-export class NewUserDTO{
-  
+export class NewUserDTO {
   @IsNotEmpty()
   @IsString()
-  private readonly nombre:String;
-  
+  private readonly nombre: String
+
   @IsNotEmpty()
   @IsString()
-  private readonly apellido:String;
-  
+  private readonly apellido: String
+
   @IsNotEmpty()
   @IsString()
-  private readonly cedula:String;
+  private readonly cedula: String
 
   @IsEmail()
   @IsNotEmpty()
   @IsString()
-  private readonly email:String;
-  
+  private readonly email: String
+
   @IsString()
   @IsNotEmpty()
   @HashPassword()
-  private readonly password:String;
+  private readonly password: String
 
-  constructor(data:any){
-    this.nombre = data.nombre;
-    this.apellido = data.apellido;
-    this.cedula = data.cedula;
-    this.email = data.email;
-    this.password = data.password;
+  constructor (data: any) {
+    this.nombre = data.nombre
+    this.apellido = data.apellido
+    this.cedula = data.cedula
+    this.email = data.email
+    this.password = data.password
   }
 
-  getNombre():String {
+  getNombre (): String {
     return this.nombre
   }
 
-  getApellido():String {
+  getApellido (): String {
     return this.apellido
   }
 
-  getCedula():String {
+  getCedula (): String {
     return this.cedula
   }
 
-  getEmail():String {
+  getEmail (): String {
     return this.email
   }
 
-  getPassword():String {
+  getPassword (): String {
     return this.password
   }
 
-  serialize():any {
+  serialize (): any {
     return {
-      nombre:this.getNombre(), 
-      apellido:this.getApellido(), 
-      cedula:this.getCedula(), 
-      email:this.getEmail(), 
-      password:this.getPassword(),
+      nombre: this.getNombre(),
+      apellido: this.getApellido(),
+      cedula: this.getCedula(),
+      email: this.getEmail(),
+      password: this.getPassword()
     } as any
   }
-
 }

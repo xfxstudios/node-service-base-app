@@ -1,6 +1,6 @@
-import mongoose, { Model } from 'mongoose';
-import {databases} from '../../databases/index.databases';
-const { Schema } = mongoose;
+import mongoose, { Model } from 'mongoose'
+import { databases } from '../../databases/index.databases'
+const { Schema } = mongoose
 
 const { mongodb } = databases
 const { local } = mongodb
@@ -19,8 +19,8 @@ const testSchema = new Schema<iTestType>({
   cedula: String,
   email: String,
   password: String
-},{
+}, {
   timestamps: true
 })
 
-export const TestModel = local.model('test_users',testSchema)
+export const TestModel = local.model('test_users', testSchema)

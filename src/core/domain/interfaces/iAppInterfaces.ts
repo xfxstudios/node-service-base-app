@@ -8,7 +8,7 @@ export interface IGetCountryByIso {
 }
 
 export interface IKeys {
-  passphrase:String
-  public_name:String
-  private_name:String
+  passphrase: String
+  public_name: String
+  private_name: String
 }

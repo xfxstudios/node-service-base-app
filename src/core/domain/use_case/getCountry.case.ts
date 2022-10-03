@@ -3,7 +3,6 @@ import { ValidDtoParams } from '../../infrastructure/decorators/appDecorators'
 import { GetCountryDTO } from '../dto/getCountryDTO'
 
 export class GetCountry {
-
   @ValidDtoParams()
 
   async execute (data: GetCountryDTO) {

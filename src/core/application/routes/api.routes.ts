@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express'
 import { controllerConfig } from '../../infrastructure/config/controllers.config'
 
 const router = Router()
-const {apiController, userController} = controllerConfig;
+const { apiController, userController } = controllerConfig
 
 // ROUTES
 router.get('/', (req: Request, res: Response) => {
@@ -17,6 +17,6 @@ router.route('/user')
   .get(userController.getUsers)
   .put(userController.updateUser)
   .delete(userController.deleteUser)
-router.get('/user/:id/show',userController.getUserById)
+router.get('/user/:id/show', userController.getUserById)
 
 export default router

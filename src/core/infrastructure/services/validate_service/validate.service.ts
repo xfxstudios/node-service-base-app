@@ -1,6 +1,6 @@
 import { ValidationError, validate } from 'class-validator'
 import { generalEnum } from '../../enums/general.enum'
-import bcrypt  from "bcrypt";
+import bcrypt from 'bcrypt'
 
 export class ValidateService {
   async validateRequestData (data: any) {
@@ -34,7 +34,7 @@ export class ValidateService {
    * @param hashed //hashed stored password
    * @returns true|false
    */
-  async validPassword(actual:String, hashed:String): Promise<boolean>{
-    return await bcrypt.compareSync(hashed, actual);
+  async validPassword (actual: String, hashed: String): Promise<boolean> {
+    return await bcrypt.compareSync(hashed, actual)
   }
 }

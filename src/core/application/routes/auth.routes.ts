@@ -1,4 +1,4 @@
-import {controllerConfig} from '../../infrastructure/config/controllers.config'
+import { controllerConfig } from '../../infrastructure/config/controllers.config'
 import { AuthMiddleware } from '../../infrastructure/middleware/auth.middleware'
 
 require('express-group-routes')

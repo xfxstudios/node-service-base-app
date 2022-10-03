@@ -1,16 +1,15 @@
-import {serviceConfig} from "../config/services.config"
-import {mongoConnections} from "./mongodb.config"
-
+import { serviceConfig } from '../config/services.config'
+import { mongoConnections } from './mongodb.config'
 
 const _initConnections = () => {
   try {
-    let connections:any = {}
+    const connections: any = {}
     // [ All connections here ]
-    connections['mongodb'] = mongoConnections
-    //connections['mysql'] = mysql_connection_script_here
-    
+    connections.mongodb = mongoConnections
+    // connections['mysql'] = mysql_connection_script_here
+
     return connections
-  }catch(e){
+  } catch (e) {
     serviceConfig.logger.setError(e.message, e)
     return false
   }

@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path')
 
 export enum generalEnum {
   INCOMING_REQUEST='Incoming Request',

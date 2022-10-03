@@ -1,6 +1,6 @@
 import { IGetCountryByIso } from '../interfaces/iAppInterfaces'
 import { IsString, IsNotEmpty } from 'class-validator'
-import {HashPassword} from '../../infrastructure/decorators/appDecorators'
+import { HashPassword } from '../../infrastructure/decorators/appDecorators'
 
 export class GetCountryDTO {
   @IsString()

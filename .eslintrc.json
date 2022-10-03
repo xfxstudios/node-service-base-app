@@ -1,0 +1,13 @@
+{
+  "extends":"ts-standard",
+  "parser": "eslint",
+  "parserOptions": {
+    "project":"./tsconfig.json"
+  },
+  "ignorePatterns":[
+    "dist",
+    "src/**/*.js",
+    "src/**/*.json",
+    "src/**/*.pem"
+  ]
+}
